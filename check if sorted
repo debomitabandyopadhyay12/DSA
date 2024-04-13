@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+void print_arr(int arr[],int n)
+{
+    cout<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+bool is_sorted(int arr[],int n)
+{
+    for(int i=0;i<n;i++)          //
+It seems like you're trying to check whether an array is sorted or not in C++. However, there is a logical issue in your is_sorted function. You're accessing arr[i+1] without ensuring that i+1 is a valid index, which can lead to undefined behavior.
+
+To fix this issue, you need to iterate till n-1 in the is_sorted function since you are comparing arr[i] with arr[i+1]
+    {
+        if(arr[i]>arr[i+1])       
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+ int i,n,arr[10];
+ cout<<"enter th enumber of element";
+ cin>>n;
+ cout<<"enter the array element-";
+ for(i=0;i<n;i++)
+ {
+     cin>>arr[i];
+ }
+ print_arr(arr,n);
+ bool ans=is_sorted(arr,n);
+ print_arr(arr,n);
+ if(ans)
+ {
+     cout<<"array is sorted"<<endl;
+ }
+ else
+ {
+     cout<<"not sorted";
+ }
+    return 0;
+}
