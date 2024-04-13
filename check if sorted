@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 void print_arr(int arr[],int n)
@@ -12,12 +13,9 @@ void print_arr(int arr[],int n)
 
 bool is_sorted(int arr[],int n)
 {
-    for(int i=0;i<n;i++)          //
-It seems like you're trying to check whether an array is sorted or not in C++. However, there is a logical issue in your is_sorted function. You're accessing arr[i+1] without ensuring that i+1 is a valid index, which can lead to undefined behavior.
-
-To fix this issue, you need to iterate till n-1 in the is_sorted function since you are comparing arr[i] with arr[i+1]
+    for(int i=0;i<n-1;i++)                 //upto n-1
     {
-        if(arr[i]>arr[i+1])       
+        if(arr[i]>arr[i+1])
         {
             return false;
         }
