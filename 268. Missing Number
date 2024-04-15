@@ -1,21 +1,30 @@
-class Solution {
-public:
-    int missingNumber(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        int n = nums.size();
-        //case 1
-        if(nums[0] != 0)return 0;
-        //case 2 
-        if(nums[n-1] != n)return n;
-        for(int i =1;i<nums.size();i++){
-            if(nums[i] != i){
-            //case 3
-            return i;
 
-        
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int missingNumber(vector<int>&a, int N) {
+
+    //Summation of first N numbers:
+    int sum = (N * (N + 1)) / 2;
+
+    //Summation of all array elements:
+    int s2 = 0;
+    for (int i = 0; i < N - 1; i++) {
+        s2 += a[i];
     }
-        }
- return 0;
-    }  
 
-};
+    int missingNum = sum - s2;
+    return missingNum;
+}
+
+int main()
+{
+    int N = 5;
+    vector<int> a = {1, 2, 4, 5};
+    int ans = missingNumber(a, N);
+    cout << "The missing number is: " << ans << endl;
+    return 0;
+}
+
