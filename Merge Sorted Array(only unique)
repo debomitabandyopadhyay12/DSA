@@ -1,0 +1,82 @@
+#include<iostream>
+#include<vector>
+#include <climits>
+using namespace std;
+
+void merge(int arr1[], int n, int arr2[], int m, int arr3[]) {
+
+    int i = 0, j = 0;
+    int k = 0;
+    int last_added=INT_MIN;;
+    while( i<n && j<m) {
+        if(arr1[i] == arr2[j])
+        {
+            if(last_added !=arr1[i])
+            {
+            arr3[k] = arr1[i];
+            i++;
+            j++;
+            k++;
+            last_added=arr3[k];
+            }
+        }
+        if(arr1[i] < arr2[i]){
+             if(last_added !=arr2[i])
+            arr3[k++] = arr1[i++];
+            last_added=arr3[k];
+        }
+        else{
+            if(last_added !=arr2[j])
+            arr3[k++] = arr2[j++];
+            last_added=arr3[k];
+        }
+    }
+
+    //copy first array k element ko
+    while(i<n) {
+        arr3[k++] = arr1[i++];
+    }
+
+    //copy kardo second array k remaining element ko
+    while(j<m) {
+        arr3[k++] = arr2[j++];
+    }
+}
+
+void print(int ans[], int n) {
+    for(int i=0; i<n; i++) {
+        cout<< ans[i] <<" ";
+    }
+    cout << endl;
+}
+
+int main() {
+
+int n,m;
+cout<<"enter th enumber of element in arr1";
+ cin>>n;
+ int arr1[n];
+ cout<<"enter the array1 element-";
+ for(int i=0;i<n;i++)
+ {
+     cin>>arr1[i];
+ }
+cout<<"enter th enumber of element in arr2";
+ cin>>m;
+  int arr2[m];
+ cout<<"enter the array2 element-";
+ for(int i=0;i<m;i++)
+ {
+     cin>>arr2[i];
+ }
+   
+
+    int arr3[n+m] = {0};
+
+    merge(arr1, n, arr2, m, arr3);
+
+    print(arr3,n+m );
+
+
+    return 0;
+}
