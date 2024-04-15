@@ -1,0 +1,19 @@
+#include <vector>
+#include <algorithm> // Include the <algorithm> header for sort
+using namespace std;
+
+vector<int> getSecondOrderElements(int n, vector<int> arr) {
+    // Sort the array in ascending order
+    sort(arr.begin(), arr.end());
+
+    vector<int> result;
+
+    // Check if the array has at least two elements
+    if (n >= 2) {
+        // Add the second largest element to the result vector
+        result.push_back(arr[n - 2]);
+         result.push_back(arr[1]);
+    }
+
+    return result;
+}
